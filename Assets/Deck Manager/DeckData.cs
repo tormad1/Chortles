@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -39,6 +40,7 @@ public class DeckData : MonoBehaviour
         if (roundManager.turn == "Reset")
         {
             killCard();
+            DrawCard();
         }
     }
     void InitializeLists()
@@ -57,7 +59,7 @@ public class DeckData : MonoBehaviour
             Tuple.Create(1, dryObj, 1, 7, "Why do we never tell secrets on a farm? Because the corn has ears."),
             Tuple.Create(2, darkObj, 4, 18, "I'd tell you a chemistry joke but I know I wouldn't get a reaction."),
             Tuple.Create(3, slapObj, 3, 12, "Why don't skeletons fight each other? They don't have the guts."),
-            Tuple.Create(4, blankObj, 1, 8, "I'm so good at sleeping, I can do it with my eyes closed."),
+            Tuple.Create(4, blankObj, 0, 0, "blank spot")
 
         };
     }
@@ -106,6 +108,23 @@ public class DeckData : MonoBehaviour
             new Vector2(-0.5f, -3f),
             new Vector2(1, -3f)
         };
+    }
+
+
+    private void DrawCard()
+    {
+        int i = 0;
+        foreach (int slot in DeckSlots)
+        {
+            if (slot == Cards.Count)
+            {
+                DeckSlots.RemoveAt(i);
+                DeckSlots.Add(Random.Range(0, Cards.Count - 1));
+            }
+            i++;
+        }
+        UpdateDeck();
+
     }
 
     public void killCard()

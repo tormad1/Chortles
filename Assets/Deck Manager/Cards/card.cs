@@ -72,23 +72,23 @@ public class card : MonoBehaviour
             if (i == cardkey)
             {
                 cardStats = card;
+
+                EnergyText.fontSize = 1f;
+                AttackText.fontSize = 1f;
+                JokeText.fontSize = 1f;
+
+                EnergyText.color = Color.white;
+                AttackText.color = Color.red;
+                JokeText.color = Color.black;
+
+                EnergyText.text = cardStats.Item3.ToString();
+                AttackText.text = cardStats.Item4.ToString();
+                JokeText.text = cardStats.Item5;
+
+                type = cardStats.Item1;
             }
             i++;
         }
-
-        EnergyText.fontSize = 1f;
-        AttackText.fontSize = 1f;
-        JokeText.fontSize = 1f;
-
-        EnergyText.color = Color.white;
-        AttackText.color = Color.red;
-        JokeText.color = Color.black;
-
-        EnergyText.text = cardStats.Item3.ToString();
-        AttackText.text = cardStats.Item4.ToString();
-        JokeText.text = cardStats.Item5;
-
-        type = cardStats.Item1;
     }
 
     // Update is called once per frame
@@ -134,6 +134,8 @@ public class card : MonoBehaviour
         {
             DeckData.SelectedSlot = 0;
             transform.position = BasePos;
+            energyCounter.tempVal = energyCounter.energyValue;
+            energyCounter.energyChange();
             return;
         }
         else
@@ -148,7 +150,7 @@ public class card : MonoBehaviour
 
     void cardUsed()
     {
-        energyCounter.energyValue= energyCounter.energyValue - cardStats.Item3;
+        energyCounter.tempVal = energyCounter.energyValue - cardStats.Item3;
         energyCounter.energyChange();
         Debug.Log("index" + cardIndex);
         transform.position = new Vector2(-5.5f, -0.5f);

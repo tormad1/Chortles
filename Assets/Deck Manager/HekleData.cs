@@ -113,6 +113,7 @@ public class HekleData : MonoBehaviour
         };
     }
 
+
     public static void setDeck(int num)
     {
         DeckSlots = new List<Tuple<int, int, Vector2>>

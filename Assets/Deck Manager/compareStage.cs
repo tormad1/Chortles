@@ -25,6 +25,13 @@ public class compareStage : MonoBehaviour
         resultText.text = laughOMeterChange.ToString();
 
 
+        energyCounter.energyValue = energyCounter.tempVal+2;
+        if (energyCounter.energyValue > energyCounter.energyMax)
+        {
+            energyCounter.energyValue = energyCounter.energyMax;
+        }
+        energyCounter.tempVal = energyCounter.energyValue;
+        energyCounter.energyChange();
         laughMeter.laughValue = laughMeter.laughValue + laughOMeterChange;
         laughMeter.laughChange();
         roundManager.EndRound();
