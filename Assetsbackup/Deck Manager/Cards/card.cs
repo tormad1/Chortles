@@ -13,6 +13,7 @@ public class card : MonoBehaviour
 {
     public int cardIndex;
     private Vector2 BasePos;
+    private Vector2 BaseScale;
     public GameObject Energy;
     public GameObject Joke;
     public GameObject Attack;
@@ -33,6 +34,7 @@ public class card : MonoBehaviour
 
 
         BasePos = transform.position;
+        BaseScale = transform.localScale;
         int i = 0;
         foreach (int slot in DeckData.DeckSlots)
         {
@@ -74,7 +76,7 @@ public class card : MonoBehaviour
                 cardStats = card;
 
                 EnergyText.fontSize = 1f;
-                AttackText.fontSize = 1f;
+                AttackText.fontSize = 1.5f;
                 JokeText.fontSize = 1f;
 
                 EnergyText.color = Color.white;
@@ -82,7 +84,7 @@ public class card : MonoBehaviour
                 JokeText.color = Color.black;
 
                 EnergyText.text = cardStats.Item3.ToString();
-                AttackText.text = cardStats.Item4.ToString();
+                AttackText.text =" "+ cardStats.Item4.ToString();
                 JokeText.text = cardStats.Item5;
 
                 type = cardStats.Item1;
@@ -124,8 +126,8 @@ public class card : MonoBehaviour
         if (DeckData.SelectedSlot != cardIndex)
         {
             transform.position = BasePos;
+            transform.localScale = BaseScale;
         }
-       
     }
 
     void thisCardSelected()
@@ -134,26 +136,27 @@ public class card : MonoBehaviour
         {
             DeckData.SelectedSlot = 0;
             transform.position = BasePos;
+            transform.localScale = BaseScale;
             energyCounter.tempVal = energyCounter.energyValue;
-            energyCounter.energyChange();
             return;
         }
         else
         {
+            energyCounter.tempVal = energyCounter.energyValue;
             Debug.Log("index" + cardIndex);
             Debug.Log("slot" + DeckData.SelectedSlot);
             DeckData.SelectedSlot = cardIndex;
-
-            transform.position = BasePos + new Vector2(0, 1);
+            transform.localScale = new Vector3(BaseScale.x * 1.2f, BaseScale.y * 1.2f);
         }
     }
 
     void cardUsed()
     {
+        transform.localScale = new Vector3(BaseScale.x * 1.2f, BaseScale.y * 1.2f);
         energyCounter.tempVal = energyCounter.energyValue - cardStats.Item3;
-        energyCounter.energyChange();
         Debug.Log("index" + cardIndex);
-        transform.position = new Vector2(-5.5f, -0.5f);
+        transform.position = new Vector2(-4.5f, -1);
+        //transform.localScale = new Vector3(transform.localScale.x * 1.2f, transform.localScale.y * 1.2f);
         DeckData.typeVal = cardStats.Item1;
         Debug.Log(type + " type " + cardStats.Item1);
         DeckData.attackVal = cardStats.Item4;

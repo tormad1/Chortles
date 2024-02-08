@@ -17,7 +17,7 @@ public class button : MonoBehaviour
     {
         if (roundManager.turn == "Player")
         {
-            Collider2D detectedCollider = Physics2D.OverlapPoint(new Vector2(-5.5f, -0.5f));
+            Collider2D detectedCollider = Physics2D.OverlapPoint(new Vector2(-4.5f, -1f));
             if (detectedCollider != null)
             {
                 isThere=true;

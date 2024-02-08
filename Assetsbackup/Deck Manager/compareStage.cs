@@ -21,7 +21,7 @@ public class compareStage : MonoBehaviour
 
         TextVal.color = Color.black;
 
-        TextVal.text = "" +  (hecklerAttackAdjusted*-1).ToString() + " vs " + playerAttackAdjusted.ToString();
+        TextVal.text = "" +  (hecklerAttackAdjusted*-1).ToString() + "/" + playerAttackAdjusted.ToString();
         resultText.text = laughOMeterChange.ToString();
 
 

@@ -42,7 +42,7 @@ public class HekleData : MonoBehaviour
     }
     void InitializeLists()
     {
-        SelectedSlot = 0;
+        SelectedSlot = -1;
         sarcasmCards = new List<Tuple<int, GameObject, int, int, string>>
         {
             //(Type, Card object, Energy, Attack, joke)
@@ -109,7 +109,7 @@ public class HekleData : MonoBehaviour
     {
         DeckSlots = new List<Tuple<int, int, Vector2>>
         {
-            Tuple.Create(1, Random.Range(0,Cards.Count) , new Vector2(-7.5f, -0.5f)),
+            Tuple.Create(1, Random.Range(0,Cards.Count) , new Vector2(-7f, -1f)),
         };
     }
 
@@ -118,7 +118,7 @@ public class HekleData : MonoBehaviour
     {
         DeckSlots = new List<Tuple<int, int, Vector2>>
         {
-            Tuple.Create(1, num , new Vector2(-7.5f, -0.5f)),
+            Tuple.Create(1, num , new Vector2(-7f, -1f)),
         };
     }
 }

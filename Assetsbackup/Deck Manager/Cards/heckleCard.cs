@@ -12,7 +12,6 @@ using TMPro;
 public class heckleCard : MonoBehaviour
 {
     public int cardIndex;
-    private Vector2 BasePos;
     public GameObject Energy;
     public GameObject Joke;
     public GameObject Attack;
@@ -25,12 +24,10 @@ public class heckleCard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.localScale = new Vector3(transform.localScale.x * 1.2f, transform.localScale.y * 1.2f);
         EnergyText = Energy.GetComponent<TMP_Text>();
         AttackText = Attack.GetComponent<TMP_Text>();
         JokeText = Joke.GetComponent<TMP_Text>();
-
-
-        BasePos = transform.position;
         int i = 0;
         foreach (Tuple<int, int, Vector2> slot in HekleData.DeckSlots)
         {
@@ -54,7 +51,6 @@ public class heckleCard : MonoBehaviour
             if (i == cardkey)
             {
                 cardStats = card;
-
             }
             i++;
         }

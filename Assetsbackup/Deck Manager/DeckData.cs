@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
@@ -45,7 +44,7 @@ public class DeckData : MonoBehaviour
     }
     void InitializeLists()
     {
-        SelectedSlot = 0;
+        SelectedSlot = 8;
 
 
         Cards = new List<Tuple<int, GameObject, int, int, string>>
@@ -100,13 +99,13 @@ public class DeckData : MonoBehaviour
 
         cardPositions = new List<Vector2>()
         {
-            new Vector2(-8, -3f),
-            new Vector2(-6.5f, -3f),
-            new Vector2(-5, -3f),
-            new Vector2(-3.5f, -3f),
-            new Vector2(-2, -3f),
-            new Vector2(-0.5f, -3f),
-            new Vector2(1, -3f)
+            new Vector2(-8, -3.5f),
+            new Vector2(-6.5f, -3.5f),
+            new Vector2(-5, -3.5f),
+            new Vector2(-3.5f, -3.5f),
+            new Vector2(-2, -3.5f),
+            new Vector2(-0.5f, -3.5f),
+            new Vector2(1, -3.5f)
         };
     }
 
